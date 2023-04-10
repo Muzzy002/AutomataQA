@@ -51,6 +51,13 @@ class CheckBoxPage(BasePage):
 			else:
 				break
 
+	def get_checked_checkboxes(self):
+		checked_list = self.element_are_presents(self.locators.CHECKED_ITEMS)
+		data = []
+		for box in checked_list:
+			title_item = box.find_element_by_xpath()
+
+
 
 
 

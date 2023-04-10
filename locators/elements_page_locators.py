@@ -24,3 +24,4 @@ class CheckBoxPageLocators:
     ITEM_LIST = (By.CSS_SELECTOR, 'span[class="rct-title"]')
 
     CHECKED_ITEMS = (By.CSS_SELECTOR, 'svg[class="rct-icon rct-icon-half-check"]')
+    # .//ancestor::span[@class="rct-text"]
