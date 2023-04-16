@@ -3,7 +3,7 @@ import random
 from selenium.webdriver.common.by import By
 
 from generator.generator import generated_person
-from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators
+from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, CheckBoxLocator
 from pages.base_page import BasePage
 
 
@@ -66,6 +66,24 @@ class CheckBoxPage(BasePage):
 		for item in result_list:
 			data.append(item.text)
 		return str(data).lower().replace(" ", "")
+
+
+class RadioButtonPage(BasePage):
+
+	locators = CheckBoxLocator()
+
+	def click_on_check(self):
+		item_box = self.element_are_visible(self.locators.INPUT_CHECK)
+		count = 10
+		while count != 0:
+			item = item_box[random.randint(0,1)]
+			if count > 0:
+				self.go_to_element(item)
+				item.click()
+				count -= 1
+			else:
+				break
+
 
 
 

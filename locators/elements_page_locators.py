@@ -25,5 +25,8 @@ class CheckBoxPageLocators:
     OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
     #TESTEER = "button[class='bwc-close']:nth-child(1)"
 
+class CheckBoxLocator:
 
+    INPUT_CHECK = (By.CSS_SELECTOR, "label[class='custom-control-label']")
+    OUTPUT_CHECK = (By.CSS_SELECTOR, "span[class='text-success']")
 
