@@ -25,8 +25,13 @@ class CheckBoxPageLocators:
     OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
     #TESTEER = "button[class='bwc-close']:nth-child(1)"
 
-class CheckBoxLocator:
+class RadioButtonPageLocators:
+    YES_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="yesRadio"]')
+    IMPRESSIVE_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="impressiveRadio"]')
+    NO_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="noRadio"]')
+    OUTPUT_RESULT = (By.CSS_SELECTOR, 'p span[class="text-success"]')
 
-    INPUT_CHECK = (By.CSS_SELECTOR, "label[class='custom-control-label']")
-    OUTPUT_CHECK = (By.CSS_SELECTOR, "span[class='text-success']")
-
+    SYES_RADIOBUTTON = (By.XPATH, '//div/label[@class="custom-control-label"][@for="yesRadio"]')
+    SIMPRESSIVE_RADIOBUTTON = (By.XPATH,'//div/label[@class="custom-control-label"][@for="impressiveRadio"]')
+    SNO_RADIOBUTTON = (By.XPATH,'//div/div[@class="custom-control disabled custom-radio custom-control-inline"]')
+    SOUTPUT_RESULT = (By.XPATH,'//p/span[@class="text-success"]')
