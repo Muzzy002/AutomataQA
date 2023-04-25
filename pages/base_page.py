@@ -3,9 +3,15 @@ from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage:
+
+
+
 	def __init__(self, driver, url):
+		self.email = "d2_onishchuk@viyar.ua"
+		self.password = "Alona007"
 		self.driver = driver
 		self.url = url
+
 
 
 
