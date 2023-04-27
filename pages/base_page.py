@@ -7,10 +7,11 @@ class BasePage:
 
 
 	def __init__(self, driver, url):
-		self.email = "d2_onishchuk@viyar.ua"
-		self.password = "Alona007"
+		self.email = "brookskeith@example.com"
+		self.password = "alona007"
 		self.driver = driver
 		self.url = url
+		self.random_email = None
 
 
 
