@@ -1,4 +1,5 @@
 import random
+import time
 
 from generator.generator import generated_person
 from locators.elements_locators_bazara import ViyarBazarLocators, ModalBazarLocators, GalleryBazar
@@ -30,9 +31,7 @@ class ViyarBazarPage(BasePage):
 		self.element_is_visible(self.viyarbazarlocators.NUMBER).send_keys(number)
 		self.element_is_visible(self.viyarbazarlocators.PASSWORD).send_keys(password)
 		self.element_is_visible(self.viyarbazarlocators.CLONE_PASSWORD).send_keys(password)
-		#self.element_is_visible(self.locators.VIRDEL).click()
 		self.element_is_visible(self.viyarbazarlocators.VIRDEL_ZAMOVNIK).click()
-		#self.element_is_visible(self.locators.VIRDEL_ZAMOVNIK).send_keys(Keys.ESCAPE)
 		self.element_is_visible(self.viyarbazarlocators.CHECK_BOX).click()
 		self.element_is_visible(self.viyarbazarlocators.SUBMIT_REGISTER).click()
 		self.random_email = email
@@ -91,8 +90,13 @@ class ViyarBazarPage(BasePage):
 		return email
 
 	def check_email_in(self):
-		check_email = self.element_is_presents(self.modalbazarlocators.CHECK_POSHTA).text
-		return check_email
+		return self.element_is_presents(self.modalbazarlocators.CHECK_POSHTA).text
+
+	def check_maker(self):
+		data = []
+		maker = self.element_is_visible(self.gallerybazarlocators.CHECK_MAKER).text
+		data.append(maker)
+		return data
 
 	def click_on_gallery(self):
 		self.element_is_visible(self.gallerybazarlocators.BUTTON_GALLERY_ON_HOME).click()
@@ -111,22 +115,37 @@ class ViyarBazarPage(BasePage):
 				break
 
 	def button_more(self):
-		item = self.element_is_visible(self.gallerybazarlocators.DOWNLOAD_MORE)
-		self.go_to_element(item)
-		item.click()
+		time.sleep(10)
+		self.scroll_page(500)
+		item = self.element_is_presents(self.gallerybazarlocators.DOWNLOAD_MORE)
+		count = 1
+		while count !=0:
+			self.go_to_element(item)
+			if count > 0:
+				if item.is_displayed():
+					item.click()
+					count -= 1
+				else:
+					return item
+
+
 
 
 
 	def random_portfolio(self):
-		all_kartochki = self.element_is_visible(self.gallerybazarlocators.ALL_KARTOCHKI_PORTF)
+		all_kartochki = self.element_are_visible(self.gallerybazarlocators.ALL_KARTOCHKI_PORTF)
+		data = []
 		count = 1
 		while count != 0:
-			item = all_kartochki[random.randint(1, 59)]
-			if count > 0:
-				self.go_to_element(item)
-				item.click()
-				count -= 1
-			else:
-				break
+			item = all_kartochki[random.randint(0, len(all_kartochki)-1)]
+			for_data = item.text
+			data.append(for_data.split('\n')[0])
+			self.go_to_element(item)
+			item.click()
+			count -= 1
+		return data
+
+
+	#def check_vnytri_portdolio(self):
 
 

@@ -12,9 +12,8 @@ class TestElementsBazara:
 			viyar_page.register_on_bazar_viyar()
 			viyar_page.viyti_s_akka()
 			email_input = viyar_page.avtorizacion()
-			email_output = viyar_page.check_email_in()
 			viyar_page.after_register_viyar()
-			print(email_output,email_input)
+			email_output = viyar_page.check_email_in()
 			assert email_input == email_output, "Почты разные почему то"
 			time.sleep(5)
 
@@ -25,7 +24,12 @@ class TestElementsBazara:
 			gallery_page.click_on_gallery()
 			gallery_page.random_sort()
 			gallery_page.button_more()
-			gallery_page.random_portfolio()
+			click_on_portfolio = gallery_page.random_portfolio()
+			check_portfolio_maker = gallery_page.check_maker()
+			assert check_portfolio_maker == click_on_portfolio, "Что то с порфтолио не так"
+
+
+
 
 
 

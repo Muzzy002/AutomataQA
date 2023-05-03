@@ -49,6 +49,19 @@ class WebTablePageLocators:
 
     #tables
     FULL_PEOPLE_LIST = (By.XPATH, '//div[@class="rt-tr-group"]')
-    #SEARCH_INPUT
+    SEARCH_INPUT = (By.XPATH, '//div/input[@id="searchBox"]')
+    DELETE_BUTTON = (By.XPATH, '//div/span[@title="Delete"]')
+    ROW_PARENT = './/ancestor::div[@class="rt-tr-group"]'
+    COUNT_ROW_LIST = (By.XPATH, '//div/span/select[@aria-label="rows per page"]')
+
+    #update
+    UPDATE_BUTTON = (By.XPATH, '//div/span[@title="Edit"]')
+    NOT_FOUND_TEXT = (By.XPATH, '//div[@class="rt-noData"]')
+
+#//div[@class="rt-tr-group"]
+
+
+
+
 
 
