@@ -1,7 +1,7 @@
 import random
 import time
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage
 
 
 class TestElements:
@@ -93,7 +93,23 @@ class TestElements:
 			web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
 			web_table_page.open()
 			count = web_table_page.select_up_to_some_rows()
-			assert count == [5, 10 ,20 ,25, 50, 100], "Все гуд только на сайте баг"
+			assert count == [5,10,20,25 ,50 ,100], "Все гуд только на сайте баг"
+
+
+
+
+	class TestButtonPage:
+
+
+		def test_different_click_on_the_buttons(self, driver):
+			button_page = ButtonsPage(driver, "https://demoqa.com/buttons")
+			button_page.open()
+			button_page.random_click_on_different_button()
+			time.sleep(5)
+
+
+
+
 
 
 

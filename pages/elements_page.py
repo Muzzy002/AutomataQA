@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 from generator.generator import generated_person
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-	WebTablePageLocators
+	WebTablePageLocators, ButtonsPageLocators
 from locators.elements_locators_bazara import ViyarBazarLocators, ModalBazarLocators, GalleryBazar
 from pages.base_page import BasePage
 
@@ -166,6 +166,53 @@ class WebTablePage(BasePage):
 	def check_count_rows(self):
 		list_rows = self.element_are_presents(self.locators.FULL_PEOPLE_LIST)
 		return len(list_rows)
+
+class ButtonsPage(BasePage):
+
+	locators = ButtonsPageLocators()
+
+
+	def click_on_different_button(self, type_click):
+		if type_click == "double":
+			self.action_double_click((self.element_is_visible(self.locators.DOUBLE_BUTTON)))
+			return self.check_clicked_on_the_button(self.locators.SUCCESS_DOUBLE)
+		if type_click == "right":
+			self.action_right_click((self.element_is_visible(self.locators.RIGHT_CLICK_BUTTON)))
+			return self.check_clicked_on_the_button(self.locators.SUCCESS_RIGHT)
+		if type_click == "click":
+			self.element_is_visible(self.locators.CLICK_ME_BUTTON).click()
+			return self.check_clicked_on_the_button(self.locators.SUCCESS_CLICK_ME)
+
+
+	def check_clicked_on_the_button(self,element):
+		return self.element_is_presents(element).text
+
+
+	def random_click_on_different_button(self):
+		count = 3
+		data = [1, 2, 3]
+		while count != 0:
+			random_click = random.choice(data)
+			if random_click == 1:
+				self.click_on_different_button("double")
+				data.remove(random_click)
+				count -= 1
+				double = self.check_clicked_on_the_button(self.locators.SUCCESS_DOUBLE)
+				print(double)
+			if random_click == 2:
+				self.click_on_different_button("right")
+				data.remove(random_click)
+				count -= 1
+				right = self.check_clicked_on_the_button(self.locators.SUCCESS_RIGHT)
+				print(right)
+			if random_click == 3:
+				self.click_on_different_button("click")
+				data.remove(random_click)
+				count -= 1
+				click = self.check_clicked_on_the_button(self.locators.SUCCESS_CLICK_ME)
+				print(click)
+
+
 
 
 

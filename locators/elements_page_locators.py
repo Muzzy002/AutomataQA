@@ -62,6 +62,12 @@ class WebTablePageLocators:
 
 
 
+class ButtonsPageLocators:
 
+    DOUBLE_BUTTON = (By.XPATH, '//div/button[@id="doubleClickBtn"]')
+    RIGHT_CLICK_BUTTON = (By.XPATH, '//div/button[@id="rightClickBtn"]')
+    CLICK_ME_BUTTON = (By.XPATH, '//div[@class="mt-4"][2]/button')
 
-
+    SUCCESS_DOUBLE = (By.XPATH, '//div/p[@id="doubleClickMessage"]')
+    SUCCESS_RIGHT = (By.XPATH, '//div/p[@id="rightClickMessage"]')
+    SUCCESS_CLICK_ME = (By.XPATH, '//div/p[@id="dynamicClickMessage"]')
