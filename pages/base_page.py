@@ -55,6 +55,9 @@ class BasePage:
 		action.context_click(element)
 		action.perform()
 
+	#def switch_to_tab(self):
+
+
 
 
 
