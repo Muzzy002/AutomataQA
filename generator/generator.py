@@ -32,3 +32,11 @@ def generated_person():
 		middle_name=faker_ru.middle_name(),
 		number=faker_en.phone_number(),
  )"""
+
+def generated_file():
+	random_number = random.randint(0, 999)
+	path = rf'C:\Users\d_onishchuk\PycharmProjects\pythonProject/testfile{random_number}.txt'
+	file = open(path, "w+")
+	file.write(f"Hello world{random_number}")
+	file.close()
+	return file.name, path

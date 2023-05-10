@@ -17,5 +17,3 @@ class Person:
 	email_bazar: str = None
 	middle_name: str = None
 	number: str = None
-
-

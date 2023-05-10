@@ -45,4 +45,12 @@ class GalleryBazar:
     CHECK_MAKER = (By.XPATH, '//div[@class="meta visible-desc"]/a/p/strong')
 
 
+class ButtonHelp:
+
+    BUTTON_DOPOMOGA = (By.XPATH, '(//li/a[@href="/faq/"])[2]')
+
+
+
+
+
 

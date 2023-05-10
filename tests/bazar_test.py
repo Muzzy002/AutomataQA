@@ -2,8 +2,8 @@ import time
 
 from pages.elements_page_bazar import ViyarBazarPage
 
-class TestElementsBazara:
 
+class TestElementsBazara:
 	class TestVicarBazaar:
 
 		def test_viyar_register(self, driver):
@@ -27,12 +27,3 @@ class TestElementsBazara:
 			click_on_portfolio = gallery_page.random_portfolio()
 			check_portfolio_maker = gallery_page.check_maker()
 			assert check_portfolio_maker == click_on_portfolio, "Что то с порфтолио не так"
-
-
-
-
-
-
-
-
-
