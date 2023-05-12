@@ -2,7 +2,7 @@ import random
 import time
 
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, \
-	UploadAndDownloadPage
+	UploadAndDownloadPage, DynamicPropertiesPage
 
 
 class TestElements:
@@ -124,3 +124,30 @@ class TestElements:
 			upload_page.open()
 			check = upload_page.download_file()
 			assert check is True
+
+	class TestDynamicPropertiesPage:
+
+		def test_dynamic_properties(self, driver):
+			dynamic_proprties_page = DynamicPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+			dynamic_proprties_page.open()
+			color_before, color_after = dynamic_proprties_page.check_changed_of_color()
+			assert color_after != color_before, "Цвета не поменялись"
+
+		def test_appear_button(self, driver):
+			dynamic_proprties_page = DynamicPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+			dynamic_proprties_page.open()
+			appear = dynamic_proprties_page.check_appear_of_button()
+			assert appear is True, "кнопка не появилась через 5 сек"
+
+		def test_enable_button(self, driver):
+			dynamic_proprties_page = DynamicPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+			dynamic_proprties_page.open()
+			enable = dynamic_proprties_page.check_enable_button()
+			assert enable is True, "Кнопка не стала доступной через 5 секнуд"
+
+
+
+
+
+
+
