@@ -90,3 +90,8 @@ class DynamicPropertiesPageLocatros:
 
 	WILL_ENABLE_FIVE_SECONDS = (By.XPATH, '//button[@id="enableAfter"]')
 
+
+
+
+
+

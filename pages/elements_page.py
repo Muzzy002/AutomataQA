@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 from generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
 	WebTablePageLocators, ButtonsPageLocators, UploadAndDownloadPageLocators, LinksPageLocators, \
-	DynamicPropertiesPageLocatros
+	DynamicPropertiesPageLocatros, FormPageLocators
 from locators.elements_locators_bazara import ViyarBazarLocators, ModalBazarLocators, GalleryBazar
 from pages.base_page import BasePage
 
@@ -271,3 +271,13 @@ class DynamicPropertiesPage(BasePage):
 		except TimeoutException:
 			return False
 		return True
+
+class FFormPage(BasePage):
+
+	locators = FormPageLocators()
+
+	def delete_reklama(self):
+		reklama = self.element_is_visible(self.locators.REKLAMA)
+		return self.element_to_remove(reklama)
+
+

@@ -2,7 +2,7 @@ import random
 import time
 
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, \
-	UploadAndDownloadPage, DynamicPropertiesPage
+	UploadAndDownloadPage, DynamicPropertiesPage, FFormPage
 
 
 class TestElements:
@@ -144,6 +144,17 @@ class TestElements:
 			dynamic_proprties_page.open()
 			enable = dynamic_proprties_page.check_enable_button()
 			assert enable is True, "Кнопка не стала доступной через 5 секнуд"
+
+
+	class TestFormPage:
+
+
+		def test_delete_baner(self, driver):
+			dyenamic_proprties_page = FFormPage(driver, "https://demoqa.com/automation-practice-form")
+			dyenamic_proprties_page.open()
+			dyenamic_proprties_page.delete_reklama()
+			dyenamic_proprties_page.window_zoom()
+			time.sleep(10)
 
 
 

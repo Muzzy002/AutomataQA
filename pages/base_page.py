@@ -49,4 +49,12 @@ class BasePage:
 		action.context_click(element)
 		action.perform()
 
+	def element_to_remove(self, element):
+		self.driver.execute_script("arguments[0].remove();", element)
+
+	def window_zoom(self):
+		window = self.driver.execute_script("return window")
+		window.document.body.style.zoom = "75%"
+
+
 # def switch_to_tab(self):
