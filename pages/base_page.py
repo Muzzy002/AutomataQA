@@ -56,5 +56,10 @@ class BasePage:
 		window = self.driver.execute_script("return window")
 		window.document.body.style.zoom = "75%"
 
+	def move_to_element(self, element):
+		action = ActionChains(self.driver)
+		action.move_to_element(element)
+		action.perform()
+
 
 # def switch_to_tab(self):
