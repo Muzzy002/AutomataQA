@@ -1,3 +1,6 @@
+from pages.form_page import FormPage
+
+
 class TestForm:
 	class TestFormPage:
 		def test_form(self, driver):
