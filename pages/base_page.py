@@ -1,3 +1,4 @@
+
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
@@ -19,6 +20,7 @@ class BasePage:
 		return wait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
 	def element_are_visible(self, locator, timeout=5):
+		self.go_to_element(self.element_is_presents(locator))
 		return wait(self.driver, timeout).until(EC.visibility_of_all_elements_located(locator))
 
 	def element_is_presents(self, locator, timeout=5):
@@ -36,8 +38,8 @@ class BasePage:
 	def go_to_element(self, element):
 		self.driver.execute_script("arguments[0].scrollIntoView;", element)
 
-	def scroll_page(self, number):
-		self.driver.execute_script(f"window.scrollBy(0, {number});")
+	def scroll_page(self, pixels):
+		self.driver.execute_script(f"window.scrollBy(0, {pixels});")
 
 	def action_double_click(self, element):
 		action = ActionChains(self.driver)
@@ -55,6 +57,13 @@ class BasePage:
 	def window_zoom(self):
 		window = self.driver.execute_script("return window")
 		window.document.body.style.zoom = "75%"
+
+	def remove_footer(self):
+		self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
+		self.driver.execute_script("document.getElementsById('close-fixedban').remove();")
+
+	def switch_tab(self,number):
+		self.driver.switch_to.window(self.driver.window_handles[number])
 
 
 # def switch_to_tab(self):
