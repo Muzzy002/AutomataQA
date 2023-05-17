@@ -1,3 +1,5 @@
+import random
+
 from  selenium.webdriver.common.by import By
 
 
@@ -48,6 +50,25 @@ class GalleryBazar:
 class ButtonHelp:
 
     BUTTON_DOPOMOGA = (By.XPATH, '(//li/a[@href="/faq/"])[2]')
+
+
+class ReviewsBazar:
+
+    BUTTON_REVIEWS_ON_TITLE = (By.XPATH, '//span[@class="icon icon--color--blue icon--size--32"]')
+    BUTTON_IN_WATERFALL_ON_TITLE = (By.XPATH, '//li/a[@href="/reviews/"]')
+
+    list_types = [8721,8722,8731,8727,8728,8729,8730,8732,76788,76789,170607,20252]
+
+    FILTR_IN_REVIEWS = (By.XPATH, '//button[@class="project-heading__sort--btn filter--sorting"]/span[@class="icon icon--size--32"]')
+
+    ALL_VIDI_MEBLIV = (By.XPATH, f'//div/label/input[@value="{random.choice(list_types)}"]')
+    BUTTON_ACCEPT = (By.XPATH, '(//div//button/span[@class="button__text--sm offset--8--row text--weight--bolder"])[2]')
+
+    RESULT = (By.XPATH, '//div[@class="review-comment__cat--furniture"]/div[@class="text"]')
+
+    ALL_KARTOCHKI_CHECK = (By.XPATH, '//div/button[@class="icon icon--size--32 button button--transparent comment_element"]')
+
+
 
 
 

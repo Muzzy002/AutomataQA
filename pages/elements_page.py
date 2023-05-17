@@ -10,8 +10,8 @@ from selenium.webdriver.common.by import By
 from generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
 	WebTablePageLocators, ButtonsPageLocators, UploadAndDownloadPageLocators, LinksPageLocators, \
-	DynamicPropertiesPageLocatros, FormPageLocators
-from locators.elements_locators_bazara import ViyarBazarLocators, ModalBazarLocators, GalleryBazar
+	DynamicPropertiesPageLocatros
+from locators.form_page_locators import FormPageLocators
 from pages.base_page import BasePage
 
 
