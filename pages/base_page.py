@@ -69,5 +69,9 @@ class BasePage:
 	def switch_tab(self,number):
 		self.driver.switch_to.window(self.driver.window_handles[number])
 
+	def switch_to_alert(self):
+		alert = self.driver.switch_to.alert
+		return alert
+
 
 # def switch_to_tab(self):

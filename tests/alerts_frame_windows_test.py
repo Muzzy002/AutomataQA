@@ -1,6 +1,6 @@
 import time
 
-from pages.alerts_frame_windows_page import BrowserWindowsPage
+from pages.alerts_frame_windows_page import BrowserWindowsPage, AlertsPage
 
 
 class TestAlertsFrameWindows:
@@ -15,4 +15,37 @@ class TestAlertsFrameWindows:
 			time.sleep(10)
 			text_result = new_tab_page.check_opened_new_tab('Tab')
 			assert text_result == textt_result
+
+
+	class TestAlertsPage:
+
+		def test_see_alert(self, driver):
+			alert_page = AlertsPage(driver, "https://demoqa.com/alerts")
+			alert_page.open()
+			alert_text = alert_page.check_see_alert()
+			assert alert_text == "You clicked a button", "alert text not True "
+
+
+		def test_check_alert_appear_5_sec(self, driver):
+			alert_page = AlertsPage(driver, "https://demoqa.com/alerts")
+			alert_page.open()
+			alert_text = alert_page.check_alert_appear_5_sec()
+			assert alert_text == "This alert appeared after 5 seconds", "alert 5 sec text not True"
+
+		def test_confirm_alert(self, driver):
+			alert_page = AlertsPage(driver, "https://demoqa.com/alerts")
+			alert_page.open()
+			alert_text = alert_page.check_confirm_alert()
+			assert alert_text == "You selected Ok"
+
+
+		def test_promt_alert(self, driver):
+			alert_page = AlertsPage(driver, "https://demoqa.com/alerts")
+			alert_page.open()
+			text, alert_text = alert_page.check_promt_alert()
+			assert text in alert_text
+
+
+
+
 
