@@ -17,30 +17,24 @@ class BrowserWindowsPage(BasePage):
 			return text_title
 		elif page.upper() == "WINDOW":
 			self.element_is_visible(self.locators.BUTTON_NEW_WINDOW).click()
-			self.switch_tab(1)  #self.driver.switch_to.window(self.driver.window_handles[1])
+			self.switch_tab(1)  # self.driver.switch_to.window(self.driver.window_handles[1])
 			text_title = self.element_is_presents(self.locators.CHECKED_NEW_TAB).text
 			self.switch_tab(0)
 			return text_title
 
 
-
 class AlertsPage(BasePage):
-
-
 	locators = AlertsPageLocators()
-
 
 	def check_see_alert(self):
 		self.element_is_visible(self.locators.SEE_ALERT_BUTTON).click()
-		alert_window = self.switch_to_alert()    #self.driver.switch_to.alert
+		alert_window = self.switch_to_alert()  # self.driver.switch_to.alert
 		return alert_window.text
-
-
 
 	def check_alert_appear_5_sec(self):
 		self.element_is_visible(self.locators.APPEAR_ALERT_AFTER_5_SEC_BUTTON).click()
 		time.sleep(5)
-		alert_window = self.switch_to_alert()    #self.driver.switch_to.alert
+		alert_window = self.switch_to_alert()  # self.driver.switch_to.alert
 		return alert_window.text
 
 	def check_confirm_alert(self):
@@ -58,16 +52,3 @@ class AlertsPage(BasePage):
 		alert_window.accept()
 		text_result = self.element_is_presents(self.locators.PROMT_RESULT).text
 		return text, text_result
-
-
-
-
-
-
-
-
-
-
-
-
-

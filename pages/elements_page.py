@@ -247,9 +247,7 @@ class UploadAndDownloadPage(BasePage):
 
 
 class DynamicPropertiesPage(BasePage):
-
 	locators = DynamicPropertiesPageLocatros()
-
 
 	def check_enable_button(self):
 		try:
@@ -257,7 +255,6 @@ class DynamicPropertiesPage(BasePage):
 		except TimeoutException:
 			return False
 		return True
-
 
 	def check_changed_of_color(self):
 		color_button = self.element_is_presents(self.locators.COLOR_CHANGE_BUTTON)
@@ -273,12 +270,10 @@ class DynamicPropertiesPage(BasePage):
 			return False
 		return True
 
-class FFormPage(BasePage):
 
+class FFormPage(BasePage):
 	locators = FormPageLocators()
 
 	def delete_reklama(self):
 		reklama = self.element_is_visible(self.locators.REKLAMA)
 		return self.element_to_remove(reklama)
-
-
