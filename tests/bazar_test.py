@@ -27,9 +27,12 @@ class TestElementsBazara:
 			check_portfolio_maker = gallery_page.check_maker()
 			assert check_portfolio_maker == click_on_portfolio, "Что то с порфтолио не так"
 
+
 		def test_viyar_reviews(self, driver):
-			viyar_page = ReviewsBazarPage(driver, "https://viyarbazar.com/")
-			viyar_page.open()
-			viyar_page.click_on_button_reviews()
-			viyar_page.open_and_random_filter()
-			viyar_page.check_filter()
+				viyar_page = ReviewsBazarPage(driver, "https://viyarbazar.com/")
+				viyar_page.open()
+				viyar_page.click_on_button_reviews()
+				click_type = viyar_page.open_and_random_filter()
+				result_type = viyar_page.check_filter()
+				print(click_type, result_type)
+				assert click_type == result_type or result_type == True
