@@ -11,7 +11,6 @@ from pages.base_page import BasePage
 
 
 class FormPage(BasePage):
-
 	locators = FormPageLocators()
 
 	def fill_form_fields(self):
@@ -45,7 +44,3 @@ class FormPage(BasePage):
 			self.go_to_element(item)
 			data.append(item.text)
 		return data
-
-
-
-

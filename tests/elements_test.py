@@ -145,9 +145,7 @@ class TestElements:
 			enable = dynamic_proprties_page.check_enable_button()
 			assert enable is True, "Кнопка не стала доступной через 5 секнуд"
 
-
 	class TestFormPage:
-
 
 		def test_delete_baner(self, driver):
 			dyenamic_proprties_page = FFormPage(driver, "https://demoqa.com/automation-practice-form")
@@ -155,10 +153,3 @@ class TestElements:
 			dyenamic_proprties_page.delete_reklama()
 			dyenamic_proprties_page.window_zoom()
 			time.sleep(10)
-
-
-
-
-
-
-

@@ -4,7 +4,6 @@ from selenium.webdriver.common.by import By
 
 
 class FormPageLocators:
-
 	REKLAMA = (By.XPATH, '//div[@id="fixedban"]/div')
 
 	FIRST_NAME = (By.XPATH, '//div/input[@id="firstName"]')
@@ -12,7 +11,7 @@ class FormPageLocators:
 	EMAIL = (By.XPATH, '//div/input[@id="userEmail"]')
 	GENDER = (By.XPATH, f'//div/label[@for="gender-radio-{random.randint(1, 3)}"]')
 	MOBILE_NUMBER = (By.XPATH, '//div/input[@id="userNumber"]')
-	#DATE = (By.XPATH, '//div/input[@id="dateOfBirthInput"]')
+	# DATE = (By.XPATH, '//div/input[@id="dateOfBirthInput"]')
 	SUBJECT = (By.XPATH, '//div/input[@id="subjectsInput"]')
 	HOBBIES = (By.XPATH, f'//div/label[@for="hobbies-checkbox-{random.randint(1, 3)}"]')
 	PICTURE = (By.XPATH, '//input[@id="uploadPicture"]')
