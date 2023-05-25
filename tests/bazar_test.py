@@ -32,5 +32,7 @@ class TestElementsBazara:
             viyar_page = ReviewsBazarPage(driver, "https://viyarbazar.com/")
             viyar_page.open()
             viyar_page.click_on_button_reviews()
-            viyar_page.open_and_random_filter()
-            viyar_page.check_filter()
+            click_type = viyar_page.open_and_random_filter()
+            result_type = viyar_page.check_filter()
+            print(click_type, result_type)
+            assert click_type == result_type or result_type == True

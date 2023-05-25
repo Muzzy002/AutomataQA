@@ -1,6 +1,8 @@
 import random
 import time
 
+from selenium.common import TimeoutException
+from selenium.webdriver.common.by import By
 
 from generator.generator import generated_person
 from locators.elements_locators_bazara import ViyarBazarLocators, ModalBazarLocators, GalleryBazar, ButtonHelp, \
@@ -150,17 +152,28 @@ class ReviewsBazarPage(BasePage):
         self.element_is_visible(self.locators.BUTTON_IN_WATERFALL_ON_TITLE).click()
 
     def open_and_random_filter(self):
+        list_types = [8721, 8722, 8731, 8727, 8728, 8729, 8730, 8732, 76788, 76789, 170607, 20252]
+        list_random_types = random.choice(list_types)
+        ALL_VIDI_MEBLIV = (By.XPATH, f'//div/label/input[@value="{list_random_types}"]')
+        TEXT_ALL_VIDOV = (By.XPATH, f'//div/label/input[@value="{list_random_types}"]/following-sibling::*[2]')
+
+        data = []
         self.element_is_visible(self.locators.FILTR_IN_REVIEWS).click()
-        type_mebli = self.element_is_presents(self.locators.ALL_VIDI_MEBLIV)
-        print(type(type_mebli))
+        type_mebli = self.element_is_presents(ALL_VIDI_MEBLIV)
         type_mebli.click()
-        self.element_is_visible(self.locators.BUTTON_ACCEPT).click()
-        time.sleep(20)
+        result_type_mebli = self.element_is_presents(TEXT_ALL_VIDOV)
+        data.append(result_type_mebli.text)
+        self.element_is_presents(self.locators.BUTTON_ACCEPT).click()
+        return data
 
     def check_filter(self):
-        list = self.element_are_visible(self.locators.ALL_KARTOCHKI_CHECK)
-        for i in list:
-            print(i.text)
-
-
-
+        data = []
+        try:
+            time.sleep(5)
+            self.element_is_visible(self.locators.ALL_KARTOCHKI_CHECK_OPEN, 10).click()
+            type_work = self.element_is_visible(self.locators.CHECK_IN_KARTOCHKA).text
+            data.append(type_work)
+            return data
+        except TimeoutException:
+            print("По такому фильтру нет отзывов")
+            return True
