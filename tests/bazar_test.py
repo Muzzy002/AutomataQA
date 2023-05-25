@@ -15,7 +15,6 @@ class TestElementsBazara:
 			viyar_page.after_register_viyar()
 			email_output = viyar_page.check_email_in()
 			assert email_input == email_output, "Почты разные почему то"
-			time.sleep(5)
 
 		def test_viyar_gallery(self, driver):
 			gallery_page = ViyarBazarPage(driver, "https://viyarbazar.com/")

@@ -14,3 +14,18 @@ class AlertsPageLocators:
 	CONFIRM_RESULT = (By.XPATH, '//div/span[@id="confirmResult"]')
 	PROMT_BOX_ALERT_BUTTON = (By.XPATH, '//div/button[@id="promtButton"]')
 	PROMT_RESULT = (By.XPATH, '//div/span[@id="promptResult"]')
+
+
+class FramesPageLocators:
+
+	FIRST_FRAME = (By.XPATH, '//div/iframe[@id="frame1"]')
+	SECOND_FRAME = (By.XPATH, '//div/iframe[@id="frame2"]')
+	TITLE_FRAME = (By.XPATH, '//h1[@id="sampleHeading"]')
+
+
+class NestedFramesPageLocators:
+	PARENT_FRAME = (By.XPATH, '//div/iframe[@id="frame1"]')
+	PARENT_TEXT = (By.CSS_SELECTOR, 'body')
+	CHILD_FRAME = (By.XPATH, '//body/iframe[@srcdoc="<p>Child Iframe</p>"]')
+	CHILD_TEXT = (By.XPATH, '//body/p')
+
