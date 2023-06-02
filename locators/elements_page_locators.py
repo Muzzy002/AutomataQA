@@ -22,6 +22,8 @@ class CheckBoxPageLocators:
 	CHECKED_ITEMS = (By.CSS_SELECTOR, "svg[class='rct-icon rct-icon-check']")
 	TITLE_ITEM = ".//ancestor::span[@class='rct-text']"
 	OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
+
+
 # TESTEER = "button[class='bwc-close']:nth-child(1)"
 
 

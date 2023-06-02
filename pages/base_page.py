@@ -73,7 +73,6 @@ class BasePage:
 		alert = self.driver.switch_to.alert
 		return alert
 
-
 	def switch_to_frame(self, frame_locator):
 		alert = self.driver.switch_to.frame(frame_locator)
 		return alert

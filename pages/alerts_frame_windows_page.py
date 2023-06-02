@@ -2,7 +2,7 @@ import random
 import time
 
 from locators.alerts_frame_windwos_locators import BrowserWindowsLocators, AlertsPageLocators, FramesPageLocators, \
-	NestedFramesPageLocators
+	NestedFramesPageLocators, ModalDialogPageLocators
 from pages.base_page import BasePage
 
 
@@ -76,8 +76,8 @@ class FramesPage(BasePage):
 			self.switch_to_default_content()
 			return [text, width, height]
 
-class NestedFramesPage(BasePage):
 
+class NestedFramesPage(BasePage):
 	locators = NestedFramesPageLocators()
 
 	def check_nested_frame(self):
@@ -88,3 +88,20 @@ class NestedFramesPage(BasePage):
 		self.switch_to_frame(child_frame)
 		child_text = self.element_is_presents(self.locators.CHILD_TEXT).text
 		return parent_text, child_text
+
+
+class ModalDialogPage(BasePage):
+
+	locators = ModalDialogPageLocators()
+
+	def check_modal_dialogs(self):
+		self.element_is_visible(self.locators.SMALL_MODAL_BUTTON).click()
+		title_small = self.element_is_visible(self.locators.TITLE_SMALL_MODAL).text
+		body_small_text = self.element_is_visible(self.locators.BODY_SMALL).text
+		self.element_is_visible(self.locators.SMALL_MODAL_CLOSE_BUTTON).click()
+		self.element_is_visible(self.locators.LARGE_MODAL_BUTTON).click()
+		title_large = self.element_is_visible(self.locators.TITLE_LARGE_MODAL).text
+		body_large_text = self.element_is_visible(self.locators.BODY_LARGE).text
+		return [title_small, len(body_small_text)], [title_large, len(body_large_text)]
+
+
