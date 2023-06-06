@@ -1,6 +1,6 @@
 import random
 
-from data.data import Person
+from data.data import Person, Color
 from faker import Faker
 
 faker_ru = Faker('ru_RU')
@@ -46,6 +46,15 @@ def generated_file():
 
 
 def generated_subjects():
-	list = ["Hindi", "English", 'Maths', "Physics", "Chemistry", "Biology", "Computer Science", "Commerce","Accounting", "Economics", "Arts", "Social Studies", "History", "Civics"]
+	list = ["Hindi", "English", 'Maths', "Physics", "Chemistry", "Biology", "Computer Science", "Commerce",
+			"Accounting", "Economics", "Arts", "Social Studies", "History", "Civics"]
 	random_list = random.choice(list)
 	return random_list
+
+
+def generated_color():
+	yield Color(
+
+		color_name=["Blue", "Green", "Yellow", "Purple", "Black", "White", "Voilet", "Indigo", "Magenta", "Aqua"]
+
+	)
