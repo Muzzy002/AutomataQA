@@ -1,6 +1,6 @@
 import time
 
-from pages.widgets_page import AccordianPage, AutoCompletePage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage
 
 
 class TestWidgets:
@@ -25,14 +25,12 @@ class TestWidgets:
 			colors_result = autocomplete_page.check_color_in_multi()
 			assert colors == colors_result
 
-
 		def test_remove_value_from_multi(self, driver):
 			autocomplete_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
 			autocomplete_page.open()
 			autocomplete_page.fill_input_multi()
 			count_value_before, count_value_after = autocomplete_page.remove_value_from_multi()
 			assert count_value_before != count_value_after
-
 
 		def test_fill_single_autocomplete(self, driver):
 			autocomplete_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
@@ -42,4 +40,38 @@ class TestWidgets:
 			assert color == color_result
 
 
+	class TestDatePickerPage:
 
+		def test_change_date(self, driver):
+			date_picker_page = DatePickerPage(driver, 'https://demoqa.com/date-picker')
+			date_picker_page.open()
+			value_data_before, value_date_after = date_picker_page.select_date()
+			assert value_data_before != value_date_after
+
+
+		def test_change_date_and_time(self, driver):
+			date_picker_page = DatePickerPage(driver, 'https://demoqa.com/date-picker')
+			date_picker_page.open()
+			value_data_before, value_date_after = date_picker_page.select_date()
+			print(value_date_after)
+			print(value_data_before)
+			assert value_data_before != value_date_after
+
+	class TestSliderPage:
+		def test_slider(self, driver):
+			slider = SliderPage(driver, 'https://demoqa.com/slider')
+			slider.open()
+			before, after = slider.change_slider_value()
+			assert before != after
+
+
+	class TestProgressBarPage:
+		def test_progress_bar(self, driver):
+			progress_bar = ProgressBarPage(driver, 'https://demoqa.com/progress-bar')
+			progress_bar.open()
+			#value_before, value_after = progress_bar.change_progress_bar_value()
+			value_before, value_after = progress_bar.change_progress_bar_value_100()
+			#assert value_before != value_after
+			print(value_before)
+			print(value_after)
+			print(type(value_before))

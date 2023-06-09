@@ -6,8 +6,10 @@ from pages.elements_page_bazar import ViyarBazarPage, ReviewsBazarPage
 class TestElementsBazara:
 	class TestVicarBazaar:
 
+		link = "https://viyarbazar.com/"
+
 		def test_viyar_register(self, driver):
-			viyar_page = ViyarBazarPage(driver, "https://viyarbazar.com/")
+			viyar_page = ViyarBazarPage(driver, self.link)
 			viyar_page.open()
 			viyar_page.register_on_bazar_viyar()
 			viyar_page.viyti_s_akka()
@@ -17,7 +19,7 @@ class TestElementsBazara:
 			assert email_input == email_output, "Почты разные почему то"
 
 		def test_viyar_gallery(self, driver):
-			gallery_page = ViyarBazarPage(driver, "https://viyarbazar.com/")
+			gallery_page = ViyarBazarPage(driver, self.link)
 			gallery_page.open()
 			gallery_page.avtorizacion()
 			gallery_page.click_on_gallery()
@@ -28,7 +30,7 @@ class TestElementsBazara:
 			assert check_portfolio_maker == click_on_portfolio, "Что то с порфтолио не так"
 
 		def test_viyar_reviews(self, driver):
-			viyar_page = ReviewsBazarPage(driver, "https://viyarbazar.com/")
+			viyar_page = ReviewsBazarPage(driver, self.link)
 			viyar_page.open()
 			viyar_page.click_on_button_reviews()
 			click_type = viyar_page.open_and_random_filter()

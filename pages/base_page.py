@@ -54,7 +54,7 @@ class BasePage:
 	def element_to_remove(self, element):
 		self.driver.execute_script("arguments[0].remove();", element)
 
-	def window_zoom(self):
+	def window_zoom(self):  # поменять зум
 		window = self.driver.execute_script("return window")
 		window.document.body.style.zoom = "75%"
 
@@ -67,19 +67,25 @@ class BasePage:
 		self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
 		self.driver.execute_script("document.getElementsById('close-fixedban').remove();")
 
-	def switch_tab(self, number):
+	def switch_tab(self, number):  # На вкладку другую
 		self.driver.switch_to.window(self.driver.window_handles[number])
 
 	def switch_to_alert(self):
-		alert = self.driver.switch_to.alert
+		alert = self.driver.switch_to.alert  # на алерт
 		return alert
 
-	def switch_to_frame(self, frame_locator):
+	def switch_to_frame(self, frame_locator): # свич на другое окно
 		alert = self.driver.switch_to.frame(frame_locator)
 		return alert
 
-	def switch_to_default_content(self):
+	def switch_to_default_content(self): #Свич на другой контент
 		alert = self.driver.switch_to.default_content()
 		return alert
+
+	def action_drug_and_drop_by_offset(self, element, x_coords, y_coords): # Зажимает правую кнопку миши а потмо двигает
+		action = ActionChains(self.driver)
+		action.drag_and_drop_by_offset(element, x_coords, y_coords)
+		action.perform()
+
 
 # def switch_to_tab(self):
