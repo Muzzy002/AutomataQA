@@ -8,7 +8,7 @@ from selenium.webdriver.support.select import Select
 from generator.generator import generated_color, generated_date
 from locators.slider_page_locators import SlidePageLocators, ProgressBarPageLocators
 from locators.widgets_page_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
-	TabsPageLocators
+	TabsPageLocators, ToolTipsPageLocators, MenuPageLocators, SelectMenuPageLocators, Locatrosadadsad
 from pages.base_page import BasePage
 
 
@@ -183,6 +183,127 @@ class TabsPage(BasePage):
 		except ElementClickInterceptedException:
 			print('lol')
 		return len(what_content), len(origin_content), len(use_content)
+
+class ToolTipsPage(BasePage):
+	locators = ToolTipsPageLocators()
+
+	def tool_tips(self):
+		elements_text = []
+		self.element_is_visible(self.locators.BUTTON).click()
+		hint_button = self.element_is_visible(self.locators.TOOL_TIP_BUTTON).text
+		elements_text += [hint_button]
+		self.element_is_visible(self.locators.FIELD).click()
+		hint_field = self.element_is_visible(self.locators.TOOL_TIP_FIELD).text
+		elements_text += [hint_field]
+		self.element_is_visible(self.locators.CONTRTARY_LINK).click()
+		hint_link = self.element_is_visible(self.locators.TOOL_TIP_CONTRARY).text
+		elements_text += [hint_link]
+		self.scroll_page("200")
+		self.element_is_visible(self.locators.SECTION_LINK).click()
+		hint_section = self.element_is_visible(self.locators.TOOL_TIP_SECTION).text
+		elements_text += [hint_section]
+		print(elements_text)
+
+	def get_text_fro_tool_tips(self, hover_element, wait_elem):
+		element = self.element_is_presents(hover_element)
+		self.move_to_element(element)
+		self.element_is_visible(wait_elem)
+		tool_tip_text = self.element_is_visible(self.locators.ALL_TOOL_TIPS)
+		text = tool_tip_text.text
+		return text
+
+	def check_tool_tips(self):
+		self.scroll_page("200")
+		tool_tip_text_button = self.get_text_fro_tool_tips(self.locators.BUTTON, self.locators.TOOL_TIP_BUTTON)
+		time.sleep(2)
+		tool_tip_text_field = self.get_text_fro_tool_tips(self.locators.FIELD, self.locators.TOOL_TIP_FIELD)
+		time.sleep(2)
+		tool_tip_text_contrary = self.get_text_fro_tool_tips(self.locators.CONTRTARY_LINK, self.locators.TOOL_TIP_CONTRARY)
+		time.sleep(2)
+		tool_tip_text_selection = self.get_text_fro_tool_tips(self.locators.SECTION_LINK, self.locators.TOOL_TIP_SECTION)
+		time.sleep(2)
+		return tool_tip_text_button, tool_tip_text_field, tool_tip_text_contrary, tool_tip_text_selection
+
+class MenuPage(BasePage):
+	locators = MenuPageLocators()
+
+
+	def check_menu(self):
+		menu_item_list = self.element_are_presents(self.locators.ALL_ITEMS)
+		data = []
+		for item in menu_item_list:
+			self.move_to_element(item)
+			data.append(item.text)
+		return data
+
+class SelectMenuPage(BasePage):
+	locators = SelectMenuPageLocators()
+
+	def first_input(self):
+		data_for_first = f"Group {random.randint(1,2)}, option {random.randint(1,2)}"
+		first_input = self.element_is_clickable(self.locators.SELECT_VALUE)
+		first_input.click()
+		select_input = self.element_is_visible(self.locators.INPUT_VALUE)
+		select_input.send_keys(data_for_first)
+		select_input.send_keys(Keys.ENTER)
+		data = self.element_is_visible(self.locators.OUTPUT_VALUE).text
+		return [data], [data_for_first]
+
+	def second_input(self):
+		data = ["Dr.", "Mr.", "Mrs.", "Ms.", "Prof.", "Other"]
+		random_data = random.choice(data)
+		second_input = self.element_is_clickable(self.locators.SELECT_ONE)
+		second_input.click()
+		select_input = self.element_is_visible(self.locators.SELECT_ONE_INPUT)
+		select_input.send_keys(random_data)
+		select_input.send_keys(Keys.ENTER)
+		output_data = self.element_is_visible(self.locators.OUTPUT_ONE).text
+		return output_data, random_data
+
+	def third_input(self):
+		randomp = random.randint(0, 10)
+		multi_select = self.element_is_clickable(self.locators.OLD_STYLE_MENU)
+		multi_select.click()
+		all_multi_select = self.element_are_presents(self.locators.ALL_LIST)
+		random_select = all_multi_select[randomp]
+		random_select.click()
+		return random_select.text
+
+	def fourth_input(self):
+		data = ["Black","Green","Blue","Red",]
+		self.scroll_page(200)
+		old_style_input = self.element_is_clickable(self.locators.MULTI_SELECT_DROP)
+		old_style_input.click()
+		for i in data:
+			input = self.element_is_presents(self.locators.INPUT_MULTI)
+			input.send_keys(i)
+			input.send_keys(Keys.ENTER)
+		delete_button = self.element_is_presents(self.locators.DELETE_MULTI_SELECT)
+		delete_button.click()
+		time.sleep(3)
+		result = self.element_are_presents(self.locators.RESULT_MULTI)
+		return result
+
+	def five_multi_select(self):
+		first_element = self.element_is_visible(self.locators.STANDART_MULTI_SELECT)
+		self.action_drug_and_drop_by_offset(first_element, 0, 50)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

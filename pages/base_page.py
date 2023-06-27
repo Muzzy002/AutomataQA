@@ -1,4 +1,4 @@
-from selenium.webdriver import ActionChains
+from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -38,7 +38,7 @@ class BasePage:
 	def go_to_element(self, element):
 		self.driver.execute_script("arguments[0].scrollIntoView;", element)
 
-	def scroll_page(self, pixels):
+	def scroll_page(self, pixels: int):
 		self.driver.execute_script(f"window.scrollBy(0, {pixels});")
 
 	def action_double_click(self, element):
@@ -82,10 +82,19 @@ class BasePage:
 		alert = self.driver.switch_to.default_content()
 		return alert
 
-	def action_drug_and_drop_by_offset(self, element, x_coords, y_coords): # Зажимает правую кнопку миши а потмо двигает
+	def action_drug_and_drop_by_offset(self, element, x_coords, y_coords): # Зажимает кнопку миши а потмо двигает
 		action = ActionChains(self.driver)
 		action.drag_and_drop_by_offset(element, x_coords, y_coords)
 		action.perform()
+
+	def action_drug_and_drop_to_element(self, what, where):
+		action = ActionChains(self.driver)
+		action.drag_and_drop(what, where)
+		action.perform()
+
+	def keys_input_enter(self):
+		action_chains = ActionChains(self.driver)
+		action_chains.send_keys(Keys.ENTER).perform()
 
 
 # def switch_to_tab(self):
