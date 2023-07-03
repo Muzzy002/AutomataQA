@@ -123,7 +123,7 @@ class SliderPage(BasePage):
 	def change_slider_value(self):
 		value_before = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
 		slider_input = self.element_is_visible(self.locators.INPUT_SLIDER)
-		self.action_drug_and_drop_by_offset(slider_input, random.randint(1, 100), 0)
+		self.action_drag_and_drop_by_offset(slider_input, random.randint(1, 100), 0)
 		value_after = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
 		return value_before, value_after
 
@@ -286,7 +286,7 @@ class SelectMenuPage(BasePage):
 
 	def five_multi_select(self):
 		first_element = self.element_is_visible(self.locators.STANDART_MULTI_SELECT)
-		self.action_drug_and_drop_by_offset(first_element, 0, 50)
+		self.action_drag_and_drop_by_offset(first_element, 0, 50)
 
 
 
