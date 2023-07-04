@@ -91,3 +91,13 @@ class TestInteractions:
             assert left_y[0][0] == left_y[1][0] and int(
                 left_y[1][0]) == 0, "box position has not changed or there has been a shift in the x-axis"
 
+
+        def test_restrickted_box(self, driver):
+            draggable_page = DraggablePage(driver, 'https://demoqa.com/dragabble')
+            draggable_page.open()
+            top_position, left_position = draggable_page.restricted_box()
+            assert int(top_position[0]) >= 0 and int(left_position[0]) >= 0
+
+
+
+

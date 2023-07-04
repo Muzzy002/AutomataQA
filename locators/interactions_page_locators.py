@@ -63,5 +63,11 @@ class DraggablePageLocators:
     AXIS_TAB = (By.CSS_SELECTOR, 'a[id="draggableExample-tab-axisRestriction"]')
     ONLY_X = (By.CSS_SELECTOR, 'div[id="restrictedX"]')
     ONLY_Y = (By.CSS_SELECTOR, 'div[id="restrictedY"]')
+    # ContainerRestrickted
+    BOX_TAB = (By.XPATH, '//a[@id="draggableExample-tab-containerRestriction"]')
+    WITHIN_THE_BOX = (By.XPATH, '//div[@class="draggable ui-widget-content ui-draggable ui-draggable-handle"]')
+
+
+
 
 
