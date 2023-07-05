@@ -1,5 +1,7 @@
 import random
 import time
+
+import allure
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from generator.generator import generated_person
@@ -9,11 +11,13 @@ from pages.base_page import BasePage
 
 
 class ViyarBazarPage(BasePage):
+
 	viyarbazarlocators = ViyarBazarLocators()
 	modalbazarlocators = ModalBazarLocators()
 	gallerybazarlocators = GalleryBazar()
 	buttonhelphref = ButtonHelp()
 
+	@allure.step("register")
 	def register_on_bazar_viyar(self):
 		password = self.password
 		person_info = next(generated_person())
@@ -22,22 +26,25 @@ class ViyarBazarPage(BasePage):
 		email = person_info.email
 		middle_name = person_info.middle_name
 		number = person_info.number
-		self.element_is_visible(self.viyarbazarlocators.BUTTON_YVITI).click()
-		self.element_is_visible(self.viyarbazarlocators.BUTTON_REGISTER).click()
-		self.element_is_visible(self.viyarbazarlocators.SECOND_NAME).send_keys(second_name)
-		self.element_is_visible(self.viyarbazarlocators.FIRST_NAME).send_keys(first_name)
-		self.element_is_visible(self.viyarbazarlocators.EMAIL).send_keys(email)
-		self.element_is_visible(self.viyarbazarlocators.MIDDLE_NAME).send_keys(middle_name)
-		self.element_is_visible(self.viyarbazarlocators.NUMBER).send_keys(number)
-		self.element_is_visible(self.viyarbazarlocators.PASSWORD).send_keys(password)
-		self.element_is_visible(self.viyarbazarlocators.CLONE_PASSWORD).send_keys(password)
-		self.element_is_visible(self.viyarbazarlocators.VIRDEL_ZAMOVNIK).click()
-		self.element_is_visible(self.viyarbazarlocators.CHECK_BOX).click()
-		self.element_is_visible(self.viyarbazarlocators.SUBMIT_REGISTER).click()
-		self.random_email = email
-		print(email)
+		with allure.step("fill info"):
+			self.element_is_visible(self.viyarbazarlocators.BUTTON_YVITI).click()
+			self.element_is_visible(self.viyarbazarlocators.BUTTON_REGISTER).click()
+			self.element_is_visible(self.viyarbazarlocators.SECOND_NAME).send_keys(second_name)
+			self.element_is_visible(self.viyarbazarlocators.FIRST_NAME).send_keys(first_name)
+			self.element_is_visible(self.viyarbazarlocators.EMAIL).send_keys(email)
+			self.element_is_visible(self.viyarbazarlocators.MIDDLE_NAME).send_keys(middle_name)
+			self.element_is_visible(self.viyarbazarlocators.NUMBER).send_keys(number)
+			self.element_is_visible(self.viyarbazarlocators.PASSWORD).send_keys(password)
+			self.element_is_visible(self.viyarbazarlocators.CLONE_PASSWORD).send_keys(password)
+			self.element_is_visible(self.viyarbazarlocators.VIRDEL_ZAMOVNIK).click()
+			self.element_is_visible(self.viyarbazarlocators.CHECK_BOX).click()
+		with allure.step("submit"):
+			self.element_is_visible(self.viyarbazarlocators.SUBMIT_REGISTER).click()
+			self.random_email = email
+			print(email)
 		return second_name, first_name, email, middle_name, number
 
+	@allure.step("after register")
 	def after_register_viyar(self):
 		all_oblasti = self.element_are_visible(self.modalbazarlocators.ALL_OBLAST)
 		count = 1
@@ -67,11 +74,13 @@ class ViyarBazarPage(BasePage):
 		else:
 			button_close.click()
 
+	@allure.step("exit acount")
 	def viyti_s_akka(self):
 		self.element_is_visible(self.modalbazarlocators.CLOSE_MODAL).click()
 		self.element_is_visible(self.modalbazarlocators.TRI_TOCHKI).click()
 		self.element_is_visible(self.modalbazarlocators.VIHOD_CHEREZ_TRI).click()
 
+	@allure.step("autorization")
 	def avtorizacion(self):
 		email_cons = self.email
 		email = self.random_email
@@ -86,18 +95,22 @@ class ViyarBazarPage(BasePage):
 		self.element_is_visible(self.modalbazarlocators.YVITI_KEKLOK).click()
 		return email
 
+	@allure.step("check email")
 	def check_email_in(self):
 		return self.element_is_presents(self.modalbazarlocators.CHECK_POSHTA).text
 
+	@allure.step("check mail")
 	def check_maker(self):
 		data = []
 		maker = self.element_is_visible(self.gallerybazarlocators.CHECK_MAKER).text
 		data.append(maker)
 		return data
 
+	@allure.step("click gallery")
 	def click_on_gallery(self):
 		self.element_is_visible(self.gallerybazarlocators.BUTTON_GALLERY_ON_HOME).click()
 
+	@allure.step("random sort")
 	def random_sort(self):
 		all_sort = self.element_are_visible(self.gallerybazarlocators.ALL_SORT_GALLERY)
 		count = 1
@@ -110,6 +123,7 @@ class ViyarBazarPage(BasePage):
 			else:
 				break
 
+	@allure.step("button more")
 	def button_more(self):
 		time.sleep(10)
 		self.scroll_page(500)
@@ -124,6 +138,7 @@ class ViyarBazarPage(BasePage):
 				else:
 					return item
 
+	@allure.step("random portfolio")
 	def random_portfolio(self):
 		all_kartochki = self.element_are_visible(self.gallerybazarlocators.ALL_KARTOCHKI_PORTF)
 		data = []
@@ -144,11 +159,13 @@ class ViyarBazarPage(BasePage):
 class ReviewsBazarPage(BasePage):
 	locators = ReviewsBazar()
 
+	@allure.step("click on reviews")
 	def click_on_button_reviews(self):
 		performim = self.element_is_visible(self.locators.BUTTON_REVIEWS_ON_TITLE)
 		self.move_to_element(performim)
 		self.element_is_visible(self.locators.BUTTON_IN_WATERFALL_ON_TITLE).click()
 
+	@allure.step("open filtr")
 	def open_and_random_filter(self):
 
 		list_types = [8721, 8722, 8731, 8727, 8728, 8729, 8730, 8732, 76788, 76789, 170607, 20252]
@@ -165,6 +182,7 @@ class ReviewsBazarPage(BasePage):
 		self.element_is_presents(self.locators.BUTTON_ACCEPT).click()
 		return data
 
+	@allure.step("check filtr")
 	def check_filter(self):
 		data = []
 		try:

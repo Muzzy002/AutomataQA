@@ -27,6 +27,8 @@ class ModalBazarLocators:
 	CLOSE_MODAL = (By.XPATH, '//article/button[@class="close"]')
 	TRI_TOCHKI = (By.XPATH, '//div/button[@class="button auth-dropmenu__btn"]/span')
 	VIHOD_CHEREZ_TRI = (By.XPATH, '//div/ul/li/a[contains(text(), "Вийти")]')
+	CLOSE_MODAL_SKAS = (By.XPATH, '//button[@class="btn btn-white-sm cansel"]')
+	ACCEPT_MODAL = (By.XPATH, '//button[@class="btn btn-blue-sm btn-light send select_cites"]')
 
 	# Avtorization
 	INPUT_EMAIL = (By.XPATH, '//div/input[@id="username"]')
