@@ -1,13 +1,11 @@
 import os
 import random
-import time
 
 from selenium.webdriver import Keys
-from selenium.webdriver.common import keys
 
-from generator.generator import generated_person, generated_file, generated_subjects
+from generator.generator import generated_person, generated_file
 from locators.form_page_locators import FormPageLocators
-from pages.base_page import BasePage
+from pagesbazar.base_page import BasePage
 
 
 class FormPage(BasePage):

@@ -9,7 +9,7 @@ from generator.generator import generated_color, generated_date
 from locators.slider_page_locators import SlidePageLocators, ProgressBarPageLocators
 from locators.widgets_page_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
 	TabsPageLocators, ToolTipsPageLocators, MenuPageLocators, SelectMenuPageLocators
-from pages.base_page import BasePage
+from pagesbazar.base_page import BasePage
 
 
 class AccordianPage(BasePage):

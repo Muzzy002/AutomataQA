@@ -5,9 +5,9 @@ import allure
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from generator.generator import generated_person
-from locators.elements_locators_bazara import ViyarBazarLocators, ModalBazarLocators, GalleryBazar, ButtonHelp, \
-	ReviewsBazar
-from pages.base_page import BasePage
+from locatorsbazar.elements_locators_bazara import ViyarBazarLocators, ModalBazarLocators, GalleryBazar, ButtonHelp, \
+	ReviewsBazar, Fastkitchen
+from pagesbazar.base_page import BasePage
 
 
 class ViyarBazarPage(BasePage):
@@ -153,8 +153,6 @@ class ViyarBazarPage(BasePage):
 		return data
 
 
-# def check_vnytri_portdolio(self):
-
 
 class ReviewsBazarPage(BasePage):
 	locators = ReviewsBazar()
@@ -194,3 +192,5 @@ class ReviewsBazarPage(BasePage):
 		except TimeoutException:
 			print("По такому фильтру нет отзывов")
 			return True
+class FastKitchenPage(BasePage):
+	locators = Fastkitchen()

@@ -89,3 +89,6 @@ class ReviewsBazar:
 	CHECK_IN_KARTOCHKA = (By.XPATH, '//div[@id="type_work"]')
 
 	BUTTON_DOPOMOGA = (By.XPATH, '(//li/a[@href="/faq/"])[2]')
+
+class Fastkitchen:
+	pass

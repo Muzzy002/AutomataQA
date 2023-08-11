@@ -1,8 +1,6 @@
-import time
-
 import allure
 
-from pages.elements_page_bazar import ViyarBazarPage, ReviewsBazarPage
+from pagesbazar.elements_page_bazar import ViyarBazarPage, ReviewsBazarPage, FastKitchenPage
 
 @allure.suite("ElementsBazara")
 class TestElementsBazara:
@@ -42,3 +40,8 @@ class TestElementsBazara:
 			result_type = viyar_page.check_filter()
 			print(click_type, result_type)
 			assert click_type == result_type or result_type == True
+
+		def test_viyar_fastkitchen(self, driver):
+			viyar_page = FastKitchenPage(driver, self.link)
+			viyar_page.open()
+

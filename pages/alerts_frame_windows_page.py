@@ -3,7 +3,7 @@ import time
 
 from locators.alerts_frame_windwos_locators import BrowserWindowsLocators, AlertsPageLocators, FramesPageLocators, \
 	NestedFramesPageLocators, ModalDialogPageLocators
-from pages.base_page import BasePage
+from pagesbazar.base_page import BasePage
 
 
 class BrowserWindowsPage(BasePage):

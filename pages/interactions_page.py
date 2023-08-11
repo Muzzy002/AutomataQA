@@ -4,7 +4,7 @@ import time
 
 from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators, \
     DroppablePageLocators, DraggablePageLocators
-from pages.base_page import BasePage
+from pagesbazar.base_page import BasePage
 
 
 class SortablePage(BasePage):

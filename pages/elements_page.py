@@ -12,7 +12,7 @@ from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLoc
 	WebTablePageLocators, ButtonsPageLocators, UploadAndDownloadPageLocators, LinksPageLocators, \
 	DynamicPropertiesPageLocatros
 from locators.form_page_locators import FormPageLocators
-from pages.base_page import BasePage
+from pagesbazar.base_page import BasePage
 
 
 class TextBoxPage(BasePage):
